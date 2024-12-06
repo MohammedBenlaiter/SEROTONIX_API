@@ -1,10 +1,13 @@
 package com.example.demo.models;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,6 +34,26 @@ public class User {
     @NonNull
     @Column(name = "password", nullable = false)
     private String password;
+
+    @NonNull
+    @Column(name = "first_name", nullable = false)
+    private String firstName;
+
+    @NonNull
+    @Column(name = "last_name", nullable = false)
+    private String lastName;
+
+    @NonNull
+    @Column(name = "phone_number", nullable = false)
+    private String phoneNumber;
+
+    @NonNull
+    @Column(name = "birth_date", nullable = false)
+    private LocalDate birthDate;
+
+    @Lob
+    @Column(name = "picture")
+    private byte[] picture;
 
     @NonNull
     @Column(name = "email", unique = true, nullable = false)
