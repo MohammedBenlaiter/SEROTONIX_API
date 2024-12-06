@@ -47,7 +47,7 @@ public class Doctor {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = false)
+    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, orphanRemoval = false)
     private List<Consultation> consultations = new ArrayList<Consultation>();
 
 }

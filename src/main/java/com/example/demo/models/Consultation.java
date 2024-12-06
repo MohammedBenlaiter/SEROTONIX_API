@@ -56,7 +56,7 @@ public class Consultation {
     private List<Operation> operations = new ArrayList<Operation>();
 
     @OneToMany(mappedBy = "consultation" , cascade = CascadeType.ALL , orphanRemoval = true)
-    private List<Analyse> prescriptions = new ArrayList<Analyse>();
+    private List<Analyse> analyses = new ArrayList<Analyse>();
 
     @OneToMany(mappedBy = "consultation" , cascade = CascadeType.ALL , orphanRemoval = true)
     private List<Radiography> radiographies = new ArrayList<Radiography>();
