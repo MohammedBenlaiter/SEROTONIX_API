@@ -44,4 +44,16 @@ public class UserController {
         Long userId = userService.getUserId(username);
         return ResponseEntity.ok().body(userId);
     }
+
+    @GetMapping("/delete")
+    public ResponseEntity<String> deleteUser(@RequestHeader("Authorization") String token) {
+        String username = JwtUtil.extractUsername(token.substring(7)); // Remove "Bearer " prefix
+        return ResponseEntity.ok().body(userService.deleteUser(username));
+    }
+
+    @PostMapping("/update")
+    public ResponseEntity<String> updateUser(@RequestHeader("Authorization") String token, @RequestBody CreateUserDto createUserDto) {
+        String username = JwtUtil.extractUsername(token.substring(7)); // Remove "Bearer " prefix
+        return ResponseEntity.ok().body(userService.updateUser(username, createUserDto));
+    }
 }

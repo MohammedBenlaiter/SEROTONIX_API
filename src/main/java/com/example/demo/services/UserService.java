@@ -23,8 +23,24 @@ public class UserService {
     public String creatUser(CreateUserDto createUserDto) {
         User user = new User();
         user = GenericMapper.map(createUserDto, User.class);
-
         userRepositories.save(user);
         return "User Created Successfully";
+    }
+
+    public String deleteUser(String username) {
+        User user = userRepositories.findByUsername(username);
+        userRepositories.delete(user);
+        return "User Deleted Successfully";
+    }
+
+    public String updateUser(String username, CreateUserDto createUserDto) {
+        User user = userRepositories.findByUsername(username);
+        user = GenericMapper.map(createUserDto, User.class);
+        userRepositories.save(user);
+        return "User Updated Successfully";
+    }
+
+    public User getUser(String username) {
+        return userRepositories.findByUsername(username);
     }
 }
